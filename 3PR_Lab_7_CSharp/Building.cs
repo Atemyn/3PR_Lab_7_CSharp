@@ -42,7 +42,8 @@ namespace _3PR_Lab_7_СSharp
 		public void initBuilding()
 		{
 			setBuiling(1.0, 1.0, 1.0, 1, 1.0);
-			facade.setFacade(0, 0);
+			facade.WindowsAmount = 0;
+			facade.OpenedWindowsAmount = 0;
 		}
 		/* Функция по вводу с клавиатуры свойств для экземпляра класса Building */
 		public void inputBuilding()
@@ -117,7 +118,9 @@ namespace _3PR_Lab_7_СSharp
 
 			floorAmount = floorAmount + build.floorAmount;
 
-			facade.addToFacade(build.facade);
+			this.facade.WindowsAmount += build.facade.WindowsAmount;
+			this.facade.OpenedWindowsAmount += build.facade.OpenedWindowsAmount;
+
 			// Расчет нового коэффициента устойчивости и проверка его корректности.
 			stabilityFactor = (float)(sideLength * sideLength * Math.Sqrt(basementHeight)) / (floorHeight * floorAmount);
 			if (stabilityFactor < 1)

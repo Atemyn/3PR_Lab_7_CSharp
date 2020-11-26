@@ -30,12 +30,6 @@ namespace _3PR_Lab_7_СSharp
 				openedWindowsAmount = value;
 			}
 		}
-		// Функция по заданию приватных полей класса.
-		public void setFacade(int windowsAmount, int openedWindowsAmount)
-		{
-			this.windowsAmount = windowsAmount;
-			this.openedWindowsAmount = openedWindowsAmount;
-		}
 		// Функция, выводящая приватные поля в консоль.
 		public void getFacade()
 		{
@@ -80,12 +74,6 @@ namespace _3PR_Lab_7_СSharp
 			}
 
 			openedWindowsAmount -= windowsToClose;
-		}
-		// Функция по сложению двух объектов класса Façade.
-		public void addToFacade(Facade facadeToAdd)
-		{
-			windowsAmount += facadeToAdd.windowsAmount;
-			openedWindowsAmount += facadeToAdd.openedWindowsAmount;
 		}
 	};
 }
