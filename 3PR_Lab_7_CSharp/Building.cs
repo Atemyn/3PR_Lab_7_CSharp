@@ -6,6 +6,8 @@ namespace _3PR_Lab_7_СSharp
 {
 	class Building
 	{
+		// Тип здания.
+		private string typeOfBuilding; 
 		// Длина стороны основания.
 		private double sideLength;
 		// Высота фундамента.
@@ -19,8 +21,9 @@ namespace _3PR_Lab_7_СSharp
 		// Коэффициент устойчивости.
 		private double stabilityFactor;
 		/* Функция по установке переданных значений в свойства экземпляра класса Building. */
-		private void setBuiling(double sideLength, double basementHeight, double floorHeight, int floorAmount, double stabilityFactor)
+		private void setBuiling(string typeOfBuilding, double sideLength, double basementHeight, double floorHeight, int floorAmount, double stabilityFactor)
 		{
+			this.typeOfBuilding = typeOfBuilding;
 			this.sideLength = sideLength;
 			this.basementHeight = basementHeight;
 			this.floorHeight = floorHeight;
@@ -31,6 +34,7 @@ namespace _3PR_Lab_7_СSharp
 		public void getBuilding()
 		{
 			Console.WriteLine("Свойства данного здания:");
+			Console.WriteLine("Тип здания: " + typeOfBuilding);
 			Console.WriteLine("Длина стороны основания: " + sideLength);
 			Console.WriteLine("Высота фундамента: " + basementHeight);
 			Console.WriteLine("Высота этажа: " + floorHeight);
@@ -41,7 +45,7 @@ namespace _3PR_Lab_7_СSharp
 		/* Функция по заданию свойств по умолчанию экземпляра класса Building. */
 		public void initBuilding()
 		{
-			setBuiling(1.0, 1.0, 1.0, 1, 1.0);
+			setBuiling("Жилое здание", 1.0, 1.0, 1.0, 1, 1.0);
 			facade.WindowsAmount = 0;
 			facade.OpenedWindowsAmount = 0;
 		}
@@ -49,6 +53,13 @@ namespace _3PR_Lab_7_СSharp
 		public void inputBuilding()
 		{
 			// Защиты от дурака для ввода всех необходимых данных.
+			Console.Write("Введите тип вашего здания: ");
+			typeOfBuilding = Console.ReadLine();
+			while (typeOfBuilding.Length == 0)
+			{
+				Console.Write("Неверный ввод типа здания - он должен быть непустой строкой. Попробуйте еще раз: ");
+				typeOfBuilding = Console.ReadLine();
+			}
 			Console.Write("Введите длину стороны вашего здания: ");
 			while (!double.TryParse(Console.ReadLine(), out sideLength) || sideLength <= 0)
 			{
@@ -104,6 +115,7 @@ namespace _3PR_Lab_7_СSharp
 				return;
 			}
 			Console.WriteLine("Совмещаем два здания... Их свойства такие:");
+			Console.WriteLine("Типы зданий: " + typeOfBuilding + " и " + build.typeOfBuilding);
 			Console.WriteLine("Длины сторон оснований: " + sideLength + " и " + build.sideLength);
 			Console.WriteLine("Высоты фундаментов: " + basementHeight + " и " + build.basementHeight);
 			Console.WriteLine("Высоты этажей: " + floorHeight + " и " + build.floorHeight);
@@ -111,6 +123,8 @@ namespace _3PR_Lab_7_СSharp
 			Console.WriteLine("Коэффициенты устойчивости: " + stabilityFactor + " и " + build.stabilityFactor);
 			Console.WriteLine("Общие количества окон: " + facade.WindowsAmount + " и " + build.facade.WindowsAmount);
 			Console.WriteLine("Количества открытых окон: " + facade.OpenedWindowsAmount + " и " + build.facade.OpenedWindowsAmount + "\n");
+
+			typeOfBuilding = typeOfBuilding + " " + build.typeOfBuilding;
 
 			if (sideLength < build.sideLength)
 				sideLength = build.sideLength;
@@ -216,6 +230,8 @@ namespace _3PR_Lab_7_СSharp
 		public static Building operator +(Building firstBuilding, Building secondBuilding)
 		{
 			Building resultB = new Building();
+
+			resultB.typeOfBuilding = firstBuilding.typeOfBuilding + " " + secondBuilding.typeOfBuilding;
 
 			if (firstBuilding.sideLength > secondBuilding.sideLength)
 				resultB.sideLength = firstBuilding.sideLength;
