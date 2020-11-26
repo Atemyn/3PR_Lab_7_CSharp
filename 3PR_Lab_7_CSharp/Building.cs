@@ -4,7 +4,7 @@ using System.Text;
 
 namespace _3PR_Lab_7_СSharp
 {
-	class Building
+	struct Building
 	{
 		// Тип здания.
 		private string typeOfBuilding; 
@@ -17,7 +17,7 @@ namespace _3PR_Lab_7_СSharp
 		// Количество этажей.
 		private int floorAmount;
 		// Объект класса фасада здания, содержащий информацию об окнах здания.
-		private Facade facade = new Facade();
+		private Facade facade;
 		// Коэффициент устойчивости.
 		private double stabilityFactor;
 		/* Функция по установке переданных значений в свойства экземпляра класса Building. */
@@ -109,11 +109,6 @@ namespace _3PR_Lab_7_СSharp
 		/* Функция по сложению двух экземпляров класса Building, где build - экземпляр, который будет прибавляться. */
 		public void addToBuilding(Building build)
 		{
-			if (this == build)
-			{
-				Console.WriteLine("Невозможно сложить здание с самим собой!");
-				return;
-			}
 			Console.WriteLine("Совмещаем два здания... Их свойства такие:");
 			Console.WriteLine("Типы зданий: " + typeOfBuilding + " и " + build.typeOfBuilding);
 			Console.WriteLine("Длины сторон оснований: " + sideLength + " и " + build.sideLength);

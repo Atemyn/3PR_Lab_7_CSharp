@@ -79,20 +79,16 @@ namespace _3PR_Lab_7_СSharp
 			Console.WriteLine("\nДлина стороны через ref: " + numRef);
 			/*........................*/
 
-			/* Проверка функции с использованием this. */
-			building = new Building();
-
-			Console.WriteLine("\nПроверка функции с использованием this: ");
-			building.inputBuilding();
-			building.addToBuilding(building);
-			/*.........................................*/
-
-			/* Использование переопределенных операторов. */
-			Building firstB = new Building();
+			/*  Отличие структуры от класса при присваивании. */
+			/* Например, можно не вызывать конструктор для создания объекта структуры,
+			 однако в таком случае для использования методов или получения полей необходимо ручную инициализировать все поля объекта. */
+			Building firstB;
 			Building secondB = new Building();
 			Building resultB = new Building();
 
-			Console.WriteLine("\nИспользование переопределенных операторов: ");
+			Console.WriteLine("\nОтличие структуры от класса при присваивании: ");
+
+			firstB = new Building();
 
 			firstB.initBuilding();
 			secondB.inputBuilding();
@@ -101,12 +97,13 @@ namespace _3PR_Lab_7_СSharp
 			Console.WriteLine("Сумма двух зданий: ");
 			resultB.getBuilding();
 			// Оператор ++
+			// Значение в firstB и secondB будут разные, т.к. объект структуры имеет значимый тип.
 			firstB = resultB++;
 			secondB = ++resultB;
 
 			firstB.getBuilding();
 			secondB.getBuilding();
-			/*...........................................*/
+			/*..............................................*/		
 		}
 	}
 }

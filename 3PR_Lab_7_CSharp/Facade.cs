@@ -4,7 +4,7 @@ using System.Text;
 
 namespace _3PR_Lab_7_СSharp
 {
-	class Facade
+	struct Facade
 	{
 		private int windowsAmount;
 		private int openedWindowsAmount;
