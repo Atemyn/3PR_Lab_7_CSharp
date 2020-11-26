@@ -192,5 +192,20 @@ namespace _3PR_Lab_7_СSharp
 			facade.closeWindows();
 			getBuilding();
 		}
+
+		public double returnStabilityFactor()
+		{
+			return stabilityFactor;
+		}
+
+		public void returnStabilityFactor(out double number)
+		{
+			number = stabilityFactor;
+		}
+
+		public void returnSideLength(ref double number)
+		{
+			number = sideLength;
+		}
 	}
 }

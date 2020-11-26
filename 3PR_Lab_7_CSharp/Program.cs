@@ -63,6 +63,21 @@ namespace _3PR_Lab_7_СSharp
 			building.openWindowsOnFacade();
 			building.closeWindowsOnFacade();
 			/*..........................*/
+
+			/* Использование ref и out.*/
+			building = new Building();
+			double numRef, numOut;
+
+			Console.WriteLine("\nИспользование ref и out: ");
+			building.inputBuilding();
+			// Использование out: инициализация не нужна.
+			building.returnStabilityFactor(out numOut);
+			Console.WriteLine("\nКоэффициент устойчивости через out: " + numOut);
+			// Использование ref: инициализация необходима для отсутствия ошибки.
+			numRef = 0;
+			building.returnSideLength(ref numRef);
+			Console.WriteLine("\nДлина стороны через ref: " + numRef);
+			/*........................*/
 		}
 	}
 }
