@@ -78,6 +78,14 @@ namespace _3PR_Lab_7_СSharp
 			building.returnSideLength(ref numRef);
 			Console.WriteLine("\nДлина стороны через ref: " + numRef);
 			/*........................*/
+
+			/* Проверка функции с использованием this. */
+			building = new Building();
+
+			Console.WriteLine("\nПроверка функции с использованием this: ");
+			building.inputBuilding();
+			building.addToBuilding(building);
+			/*.........................................*/
 		}
 	}
 }

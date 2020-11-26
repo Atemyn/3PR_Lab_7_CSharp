@@ -98,6 +98,11 @@ namespace _3PR_Lab_7_СSharp
 		/* Функция по сложению двух экземпляров класса Building, где build - экземпляр, который будет прибавляться. */
 		public void addToBuilding(Building build)
 		{
+			if (this == build)
+			{
+				Console.WriteLine("Невозможно сложить здание с самим собой!");
+				return;
+			}
 			Console.WriteLine("Совмещаем два здания... Их свойства такие:");
 			Console.WriteLine("Длины сторон оснований: " + sideLength + " и " + build.sideLength);
 			Console.WriteLine("Высоты фундаментов: " + basementHeight + " и " + build.basementHeight);
