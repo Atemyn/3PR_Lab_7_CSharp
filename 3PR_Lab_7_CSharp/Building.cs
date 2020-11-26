@@ -212,5 +212,51 @@ namespace _3PR_Lab_7_СSharp
 		{
 			number = sideLength;
 		}
+
+		public static Building operator +(Building firstBuilding, Building secondBuilding)
+		{
+			Building resultB = new Building();
+
+			if (firstBuilding.sideLength > secondBuilding.sideLength)
+				resultB.sideLength = firstBuilding.sideLength;
+			else
+				resultB.sideLength = secondBuilding.sideLength;
+
+			if (firstBuilding.basementHeight > secondBuilding.basementHeight)
+				resultB.basementHeight = firstBuilding.basementHeight;
+			else
+				resultB.basementHeight = secondBuilding.basementHeight;
+
+			if (firstBuilding.floorHeight > secondBuilding.floorHeight)
+				resultB.floorHeight = firstBuilding.floorHeight;
+			else
+				resultB.floorHeight = secondBuilding.floorHeight;
+
+			resultB.floorAmount = firstBuilding.floorAmount + secondBuilding.floorAmount;
+
+			resultB.facade = firstBuilding.facade + secondBuilding.facade;
+
+			resultB.stabilityFactor = (float)(resultB.sideLength * resultB.sideLength * Math.Sqrt(resultB.basementHeight)) / (resultB.floorHeight * resultB.floorAmount);
+
+			if (resultB.stabilityFactor < 1)
+			{
+				resultB.initBuilding();
+			}
+
+			return resultB;
+		}
+
+		public static Building operator ++(Building building)
+		{
+			++building.floorAmount;
+
+			building.stabilityFactor = (float)(building.sideLength * building.sideLength * Math.Sqrt(building.basementHeight)) / (building.floorHeight * building.floorAmount);
+			if (building.stabilityFactor < 1)
+			{
+				building.initBuilding();
+			}
+
+			return building;
+		}
 	}
 }

@@ -86,6 +86,27 @@ namespace _3PR_Lab_7_СSharp
 			building.inputBuilding();
 			building.addToBuilding(building);
 			/*.........................................*/
+
+			/* Использование переопределенных операторов. */
+			Building firstB = new Building();
+			Building secondB = new Building();
+			Building resultB = new Building();
+
+			Console.WriteLine("\nИспользование переопределенных операторов: ");
+
+			firstB.initBuilding();
+			secondB.inputBuilding();
+			// Оператор +
+			resultB = firstB + secondB;
+			Console.WriteLine("Сумма двух зданий: ");
+			resultB.getBuilding();
+			// Оператор ++
+			firstB = resultB++;
+			secondB = ++resultB;
+
+			firstB.getBuilding();
+			secondB.getBuilding();
+			/*...........................................*/
 		}
 	}
 }

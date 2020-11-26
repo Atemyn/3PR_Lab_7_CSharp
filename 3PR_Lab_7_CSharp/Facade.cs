@@ -75,6 +75,16 @@ namespace _3PR_Lab_7_СSharp
 
 			openedWindowsAmount -= windowsToClose;
 		}
+
+		public static Facade operator +(Facade firstFacade, Facade secondFacade)
+		{
+			Facade resultF = new Facade();
+
+			resultF.windowsAmount = firstFacade.windowsAmount + secondFacade.windowsAmount;
+			resultF.openedWindowsAmount = firstFacade.openedWindowsAmount + secondFacade.openedWindowsAmount;
+
+			return resultF;
+		}
 	};
 }
 
